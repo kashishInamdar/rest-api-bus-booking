@@ -1,7 +1,10 @@
 import experss from "express"
 import mongoose from "mongoose"
 import dotenv from "dotenv"
+import Bus from "./model/Bus.js";
 dotenv.config();
+
+import { PostApiV1Buses } from "./controlers/Buses.js";
 
 const app = experss()
 app.use(experss.json())
@@ -13,6 +16,15 @@ const connectDB = async ()=>{
     }
 } 
 connectDB()
+
+app.get("/api/health" , (req , res)=>{
+    res.json({
+        success : true ,
+        message : "API work ok"
+    })
+})
+
+app.post("/api/v1/buses" , PostApiV1Buses)
 
 const PORT = process.env.PORT || 5000
 app.listen(PORT , ()=>{
