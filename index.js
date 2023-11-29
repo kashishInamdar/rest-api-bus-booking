@@ -2,6 +2,7 @@ import experss from "express"
 import mongoose from "mongoose"
 import dotenv from "dotenv"
 import Bus from "./model/Bus.js";
+import Booking from "./model/Booking.js";
 dotenv.config();
 
 import { PostApiV1Buses , GetApiV1Buses } from "./controlers/Buses.js";
