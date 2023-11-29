@@ -4,7 +4,7 @@ import dotenv from "dotenv"
 import Bus from "./model/Bus.js";
 dotenv.config();
 
-import { PostApiV1Buses } from "./controlers/Buses.js";
+import { PostApiV1Buses , GetApiV1Buses } from "./controlers/Buses.js";
 
 const app = experss()
 app.use(experss.json())
@@ -25,6 +25,8 @@ app.get("/api/health" , (req , res)=>{
 })
 
 app.post("/api/v1/buses" , PostApiV1Buses)
+
+app.get("/api/v1/buses" , GetApiV1Buses)
 
 const PORT = process.env.PORT || 5000
 app.listen(PORT , ()=>{
