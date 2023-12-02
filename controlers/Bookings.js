@@ -65,6 +65,23 @@ const PatchApiV2Bookings = async (req,res)=>{
 
 }
 
+const DeleteApiV2Bookings= async (req,res)=>{
+   try{
+    const {id} = req.params;
 
+    const deleteBooking = await Booking.deleteOne({_id:id});
+    res.json({
+        success:true,
+        data:deleteBooking,
+        message:"successfully delete"
+    })
+   }
+   catch(err){
+    res.json({
+        success:false,
+        message:err.message
+    })
+   }
+}
 
-export {PostApiV1Bookings , GetApiV1Bookings  , PutApiV1Bookings , PatchApiV2Bookings}
+export {PostApiV1Bookings , GetApiV1Bookings  , PutApiV1Bookings , PatchApiV2Bookings , DeleteApiV2Bookings}
