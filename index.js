@@ -1,11 +1,10 @@
 import experss from "express"
 import mongoose from "mongoose"
 import dotenv from "dotenv"
-import Booking from "./model/Booking.js";
 dotenv.config();
 
 import { PostApiV1Buses , GetApiV1Buses , GetApiV1BusesBYId  , PutApiV1Buses , PatchApiV2Buses ,DeleteApiV3Buses } from "./controlers/Buses.js";
-import { PostApiV1Bookings } from "./controlers/Bookings.js";
+import { PostApiV1Bookings , GetApiV1Bookings } from "./controlers/Bookings.js";
 
 const app = experss()
 app.use(experss.json())
@@ -36,6 +35,7 @@ app.delete("/api/v3/buses/:id" , DeleteApiV3Buses)
 // ------------ BOOKING ---------
 
 app.post("/api/v1/bookings" , PostApiV1Bookings)
+app.get("/api/v1/bookings", GetApiV1Bookings)
 
 
 
