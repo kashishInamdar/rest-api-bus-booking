@@ -4,7 +4,7 @@ import dotenv from "dotenv"
 import Booking from "./model/Booking.js";
 dotenv.config();
 
-import { PostApiV1Buses , GetApiV1Buses , GetApiV1BusesBYId  , PutApiV1Buses , PatchApiV1Buses } from "./controlers/Buses.js";
+import { PostApiV1Buses , GetApiV1Buses , GetApiV1BusesBYId  , PutApiV1Buses , PatchApiV2Buses ,DeleteApiV3Buses } from "./controlers/Buses.js";
 import { PostApiV1Bookings } from "./controlers/Bookings.js";
 
 const app = experss()
@@ -30,8 +30,9 @@ app.post("/api/v1/buses" , PostApiV1Buses)
 app.get("/api/v1/buses" , GetApiV1Buses)
 app.get("/api/v1/buses/:id" , GetApiV1BusesBYId )
 app.put("/api/v1/buses/:id" , PutApiV1Buses)
-app.patch("/api/v2/buses/:id", PatchApiV1Buses)
-
+app.patch("/api/v2/buses/:id", PatchApiV2Buses)
+app.delete("/api/v3/buses/:id" , DeleteApiV3Buses)
+ 
 // ------------ BOOKING ---------
 
 app.post("/api/v1/bookings" , PostApiV1Bookings)

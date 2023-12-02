@@ -73,11 +73,11 @@ const PutApiV1Buses = async(req,res)=>{
     message:"successfully update"
    })
 }
-const PatchApiV1Buses = async (req,res)=>{
+const PatchApiV2Buses = async (req,res)=>{
     try{
-      const {_id} = req.params;  
+      const {id} = req.params;  
       const {busNumber} = req.body;
-      await Bus.updateOne({_id:_id}, {$set:{busNumber:busNumber}});
+      await Bus.updateOne({_id:id}, {$set:{busNumber:busNumber}});
   
       res.status(200).json({
           success:true,
@@ -92,8 +92,18 @@ const PatchApiV1Buses = async (req,res)=>{
     }
   }
   
+  const DeleteApiV3Buses = async (req,res)=>{
+      const {id} = req.params;
   
+      const deleteBus = await Bus.deleteOne({_id:id});
+  
+      res.json({
+          success:true,
+          data:deleteBus,
+          message:"successfully deleted bus"
+      })
+  }
 
 
 
-export {PostApiV1Buses , GetApiV1Buses , GetApiV1BusesBYId , PutApiV1Buses  , PatchApiV1Buses }
+export {PostApiV1Buses , GetApiV1Buses , GetApiV1BusesBYId , PutApiV1Buses  , PatchApiV2Buses ,DeleteApiV3Buses }
