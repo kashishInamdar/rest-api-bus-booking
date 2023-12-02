@@ -1,10 +1,10 @@
 import Bus from "../model/Bus.js"
 const PostApiV1Buses = async (req ,res)=>{
-    const {busNumber , capacity , busType ,} = req.body 
+    const {busNumber , totalSeats , busType ,} = req.body 
     
     const bus = new Bus({
          busNumber,
-         capacity,
+         totalSeats,
          busType,
     })
 
@@ -13,7 +13,7 @@ const PostApiV1Buses = async (req ,res)=>{
  
         res.status(201).json({
          success:true,
-         data : bus,
+         data : buses,
          message : "Add Bus info successfully"
         }) 
 
@@ -45,4 +45,20 @@ const PostApiV1Buses = async (req ,res)=>{
    }
 }
 
-export {PostApiV1Buses , GetApiV1Buses}
+
+
+
+const GetApiV1BusesBYId = async (req,res)=>{
+    const {id} = req.params;
+
+    const finddata = await Bus.findOne({_id:id});
+    res.status(200).json({
+        success:true,
+        data:finddata,
+        message:"successfully fetch one bus"
+    })
+} 
+
+
+
+export {PostApiV1Buses , GetApiV1Buses , GetApiV1BusesBYId }

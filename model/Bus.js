@@ -6,7 +6,7 @@ const busSchema = new Schema({
         require : true,
         unique : true
     },
-    capacity : {
+    totalSeats : {
         type : Number,
         require : true
     },
