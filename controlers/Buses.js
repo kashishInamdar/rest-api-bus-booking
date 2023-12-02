@@ -73,7 +73,27 @@ const PutApiV1Buses = async(req,res)=>{
     message:"successfully update"
    })
 }
+const PatchApiV1Buses = async (req,res)=>{
+    try{
+      const {_id} = req.params;  
+      const {busNumber} = req.body;
+      await Bus.updateOne({_id:_id}, {$set:{busNumber:busNumber}});
+  
+      res.status(200).json({
+          success:true,
+          message:"successfully update"
+      })
+    }
+    catch(err){
+      return res.json({
+          success:false,
+          message:err.message
+      })
+    }
+  }
+  
+  
 
 
 
-export {PostApiV1Buses , GetApiV1Buses , GetApiV1BusesBYId , PutApiV1Buses  }
+export {PostApiV1Buses , GetApiV1Buses , GetApiV1BusesBYId , PutApiV1Buses  , PatchApiV1Buses }
