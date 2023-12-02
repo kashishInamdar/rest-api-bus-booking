@@ -59,6 +59,21 @@ const GetApiV1BusesBYId = async (req,res)=>{
     })
 } 
 
+const PutApiV1Buses = async(req,res)=>{
+    const { _id } = req.params;
+
+   const { busNumber, totalSeats, busType } = req.body;
+
+   await Bus.updateOne({_id:_id}, {$set:{ busNumber, totalSeats, busType }})
+
+   const updateBus = await Bus.findById(_id);
+
+   return res.status(200).json({
+    success:true,
+    message:"successfully update"
+   })
+}
 
 
-export {PostApiV1Buses , GetApiV1Buses , GetApiV1BusesBYId }
+
+export {PostApiV1Buses , GetApiV1Buses , GetApiV1BusesBYId , PutApiV1Buses  }

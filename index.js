@@ -4,7 +4,7 @@ import dotenv from "dotenv"
 import Booking from "./model/Booking.js";
 dotenv.config();
 
-import { PostApiV1Buses , GetApiV1Buses , GetApiV1BusesBYId } from "./controlers/Buses.js";
+import { PostApiV1Buses , GetApiV1Buses , GetApiV1BusesBYId  , PutApiV1Buses} from "./controlers/Buses.js";
 import { PostApiV1Bookings } from "./controlers/Bookings.js";
 
 const app = experss()
@@ -29,11 +29,13 @@ app.get("/api/health" , (req , res)=>{
 app.post("/api/v1/buses" , PostApiV1Buses)
 app.get("/api/v1/buses" , GetApiV1Buses)
 app.get("/api/v1/buses/:id" , GetApiV1BusesBYId )
+app.put("/api/v2/buses/:id" , PutApiV1Buses)
 
 
 // ------------ BOOKING ---------
 
 app.post("/api/v1/bookings" , PostApiV1Bookings)
+
 
 
 
