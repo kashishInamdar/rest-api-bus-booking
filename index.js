@@ -36,7 +36,7 @@ app.delete("/api/v3/buses/:id" , DeleteApiV3Buses)
 
 app.post("/api/v1/bookings" , PostApiV1Bookings)
 app.get("/api/v1/bookings", GetApiV1Bookings)
-app.put("/api/v1/bookings",PutApiV1Bookings)
+app.put("/api/v1/bookings/:id",PutApiV1Bookings)
 
 
 
