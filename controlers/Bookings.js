@@ -51,6 +51,20 @@ const PutApiV1Bookings  = async (req,res)=>{
     })
 }
 
+const PatchApiV2Bookings = async (req,res)=>{
+    const {id} = req.params;
+
+    const { to, from} = req.body;
+
+    await Booking.updateOne({_id:id}, {$set: {to:to,from:from}})
+
+    res.json({
+        success:true,
+        message:"successfully update"
+    })
+
+}
 
 
-export {PostApiV1Bookings , GetApiV1Bookings  , PutApiV1Bookings}
+
+export {PostApiV1Bookings , GetApiV1Bookings  , PutApiV1Bookings , PatchApiV2Bookings}
