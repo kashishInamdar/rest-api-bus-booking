@@ -38,6 +38,19 @@ const GetApiV1Bookings = async (req,res)=>{
     })
 }
 
+const PutApiV1Bookings  = async (req,res)=>{
+    const {id} = req.params;
+
+    const {bus, passangerName, mobileNumber, seatNumber, to, from} = req.body;
+
+    await Booking.updateOne({_id:id}, {$set:{bus, passangerName, mobileNumber, seatNumber, to, from}});
+
+    res.json({
+        success:true,
+        message:"successfully update booking"
+    })
+}
 
 
-export {PostApiV1Bookings , GetApiV1Bookings }
+
+export {PostApiV1Bookings , GetApiV1Bookings  , PutApiV1Bookings}
